@@ -1,0 +1,178 @@
+/* ==========================================================================
+   TYPOGRAPHY & DATA PRESENTATION STYLES
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--font-3xl); font-weight: 700; }
+h2 { font-size: var(--font-2xl); font-weight: 600; }
+h3 { font-size: var(--font-xl); font-weight: 600; }
+h4 { font-size: var(--font-lg); font-weight: 600; }
+h5 { font-size: var(--font-base); font-weight: 600; }
+h6 { font-size: var(--font-sm); font-weight: 600; }
+
+p {
+  color: var(--text-secondary);
+  font-size: var(--font-base);
+  line-height: 1.6;
+}
+
+.text-xs { font-size: var(--font-xs); }
+.text-sm { font-size: var(--font-sm); }
+.text-md { font-size: var(--font-md); }
+.text-base { font-size: var(--font-base); }
+.text-lg { font-size: var(--font-lg); }
+.text-xl { font-size: var(--font-xl); }
+.text-2xl { font-size: var(--font-2xl); }
+.text-3xl { font-size: var(--font-3xl); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--text-accent); }
+.text-danger { color: var(--danger); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-info { color: var(--info); }
+
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* Financial monospace numbers with tabular alignment */
+.tabular-nums, .num, .metric-value, .ticker-val, .mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Badge & Tag components */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.badge-default {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.badge-accent {
+  background: var(--accent-muted);
+  color: var(--accent);
+  border: 1px solid rgba(244, 185, 66, 0.3);
+}
+
+.badge-danger {
+  background: var(--danger-muted);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-success {
+  background: var(--success-muted);
+  color: var(--success);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-warning {
+  background: var(--warning-muted);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-info {
+  background: var(--info-muted);
+  color: var(--info);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Severity Pill */
+.severity-pill {
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.severity-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.severity-extreme {
+  background: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.severity-extreme::before {
+  background: #EF4444;
+  box-shadow: 0 0 8px #EF4444;
+}
+
+.severity-severe {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.severity-severe::before {
+  background: #F59E0B;
+}
+
+.severity-moderate {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+.severity-moderate::before {
+  background: #38BDF8;
+}
+
+/* KPI metric block */
+.kpi-title {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.kpi-value {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  line-height: 1.1;
+}
+
+.kpi-subtext {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}

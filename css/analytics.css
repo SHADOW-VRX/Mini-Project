@@ -1,0 +1,196 @@
+/* ==========================================================================
+   ANALYTICS & RISK INTELLIGENCE STYLES
+   ========================================================================== */
+
+/* Scenario Library Grid */
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--space-5);
+}
+
+.scenario-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.scenario-card:hover {
+  border-color: var(--border-default);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.scenario-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.scenario-card-title {
+  font-size: var(--font-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.scenario-card-period {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.scenario-card-desc {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+  flex: 1;
+}
+
+.scenario-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  background-color: var(--bg-secondary);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.scenario-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.scenario-metric-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.scenario-metric-val {
+  font-family: var(--font-mono);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.scenario-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-4);
+}
+
+/* ==========================================
+   RISK INTELLIGENCE METRICS
+   ========================================== */
+.risk-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+/* Correlation Matrix Heatmap */
+.correlation-matrix-container {
+  overflow-x: auto;
+  padding: var(--space-2) 0;
+}
+
+.correlation-table {
+  width: auto;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+
+.correlation-table th {
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.correlation-cell {
+  width: 54px;
+  height: 44px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  border-radius: var(--radius-xs);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  position: relative;
+}
+
+.correlation-cell:hover {
+  transform: scale(1.15);
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Concentration Indicators */
+.hhi-meter-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.hhi-bar-track {
+  height: 10px;
+  background: linear-gradient(90deg, #22C55E 0%, #22C55E 15%, #F59E0B 15%, #F59E0B 25%, #EF4444 25%, #EF4444 100%);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.hhi-marker-needle {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 4px;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px #FFFFFF;
+  transition: left var(--transition-normal);
+}
+
+/* Methodological Disclosure Card */
+.methodology-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.methodology-title {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}

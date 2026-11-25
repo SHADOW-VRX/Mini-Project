@@ -1,0 +1,133 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+/* Large Desktop (>= 1440px) */
+@media (min-width: 1440px) {
+  :root {
+    --content-max-width: 1680px;
+  }
+}
+
+/* Medium Desktop / Laptops (<= 1200px) */
+@media (max-width: 1200px) {
+  .theatre-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablets (<= 992px) */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
+  .header {
+    padding: 0 var(--space-4);
+  }
+
+  .content-area {
+    padding: var(--space-4);
+  }
+
+  .phases-track {
+    grid-template-columns: 1fr;
+  }
+
+  .phase-step {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .theatre-hud-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .theatre-controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile Phones (<= 640px) */
+@media (max-width: 640px) {
+  :root {
+    --font-kpi: 2rem;
+    --font-3xl: 1.6rem;
+    --font-2xl: 1.35rem;
+  }
+
+  .header-left .page-description {
+    display: none;
+  }
+
+  .portfolio-status-pill {
+    padding: var(--space-1) var(--space-2);
+  }
+
+  .kpi-row {
+    grid-template-columns: 1fr;
+  }
+
+  .theatre-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .portfolio-search-group {
+    min-width: 100%;
+  }
+
+  .portfolio-actions-group {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .theatre-scrubber-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .recovery-cagr-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    max-height: 95vh;
+  }
+
+  .toast-container {
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: var(--space-4);
+    max-width: none;
+  }
+}
+
+/* Small mobile (<= 380px) */
+@media (max-width: 380px) {
+  .btn {
+    padding: 0.4rem 0.65rem;
+    font-size: var(--font-xs);
+  }
+}

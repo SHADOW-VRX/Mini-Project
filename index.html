@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Crash Theatre — Interactive financial stress-testing platform to simulate market crashes, identify hidden weaknesses, and quantify portfolio risk.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfolio Crash Theatre — Experience the Crash. Discover the Weakness.</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/portfolio.css">
+  <link rel="stylesheet" href="css/theatre.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/whatif.css">
+  <link rel="stylesheet" href="css/reports.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Mobile Drawer Backdrop -->
+    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+
+    <!-- ==========================================
+         DESKTOP / MOBILE SIDEBAR
+         ========================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      <!-- Brand Logo & Header -->
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <div class="brand-title">CRASH <span>THEATRE</span></div>
+          <div class="brand-subtitle">Risk Intelligence</div>
+        </div>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Core Platform</div>
+        
+        <a href="#dashboard" class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          </div>
+          <span class="nav-text">Dashboard</span>
+        </a>
+
+        <a href="#portfolio" class="nav-item" data-view="portfolio" id="nav-portfolio">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+          </div>
+          <span class="nav-text">My Portfolio</span>
+        </a>
+
+        <a href="#theatre" class="nav-item" data-view="theatre" id="nav-theatre">
+          <div class="nav-icon text-danger">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <span class="nav-text">Crisis Theatre</span>
+        </a>
+
+        <div class="nav-section-title">Analysis & Lab</div>
+
+        <a href="#scenarios" class="nav-item" data-view="scenarios" id="nav-scenarios">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          </div>
+          <span class="nav-text">Scenario Library</span>
+        </a>
+
+        <a href="#risk" class="nav-item" data-view="risk" id="nav-risk">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          </div>
+          <span class="nav-text">Risk Intelligence</span>
+        </a>
+
+        <a href="#whatif" class="nav-item" data-view="whatif" id="nav-whatif">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+          </div>
+          <span class="nav-text">What-If Lab</span>
+        </a>
+
+        <div class="nav-section-title">Audits & Reports</div>
+
+        <a href="#autopsy" class="nav-item" data-view="autopsy" id="nav-autopsy">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+          <span class="nav-text">Post-Crash Autopsy</span>
+        </a>
+
+        <a href="#reports" class="nav-item" data-view="reports" id="nav-reports">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+          </div>
+          <span class="nav-text">Reports & Dossier</span>
+        </a>
+
+        <a href="#settings" class="nav-item" data-view="settings" id="nav-settings">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          </div>
+          <span class="nav-text">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Quick Crisis Launch CTA -->
+      <div class="sidebar-cta">
+        <button class="btn-launch-crisis" id="btn-quick-launch-crisis">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          <span>Launch Crash</span>
+        </button>
+      </div>
+
+      <!-- Sidebar Collapse / Expand Toggle -->
+      <div class="sidebar-footer">
+        <button class="sidebar-toggle-btn" id="btn-toggle-sidebar" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+        </button>
+        <div class="text-xs text-muted" id="sidebar-version-badge">v1.0.0</div>
+      </div>
+    </aside>
+
+    <!-- ==========================================
+         MAIN WRAPPER & TOP BAR
+         ========================================== -->
+    <div class="main-wrapper">
+      <header class="header">
+        <div class="header-left">
+          <button class="mobile-menu-btn icon-btn" id="btn-mobile-menu" aria-label="Open Navigation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </button>
+          <div class="header-title-group">
+            <h1 class="page-title" id="page-title">Executive Dashboard</h1>
+            <div class="page-description" id="page-description">Portfolio Valuation, Stress Vulnerabilities & Capital Exposure</div>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Active Portfolio Indicator -->
+          <div class="portfolio-status-pill" id="header-portfolio-pill" title="Active Portfolio Overview">
+            <span class="text-muted text-xs">PORTFOLIO:</span>
+            <span class="portfolio-name-badge" id="header-portfolio-name">Institutional 60/40</span>
+            <span class="portfolio-value-tag" id="header-portfolio-value">$465,220.00</span>
+          </div>
+
+          <!-- Utility Icons -->
+          <div class="header-actions">
+            <!-- Audio toggle -->
+            <button class="icon-btn" id="btn-toggle-audio" title="Toggle Crisis Sound FX">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="icon-audio">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+
+            <!-- Fullscreen Theatre Toggle -->
+            <button class="icon-btn" id="btn-toggle-fullscreen" title="Toggle Fullscreen Theatre Mode">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- ==========================================
+           MAIN CONTENT AREA (MODULE VIEWS)
+           ========================================== -->
+      <main class="content-area" id="app-content">
+
+        <!-- 1. DASHBOARD VIEW -->
+        <section class="view-section active" id="view-dashboard" data-title="Executive Dashboard" data-desc="Portfolio Valuation, Stress Vulnerabilities & Capital Exposure">
+          <div class="dashboard-grid">
+            <!-- Vulnerability Warning Banner -->
+            <div class="vulnerability-panel" id="dashboard-vuln-banner">
+              <div class="vulnerability-header">
+                <div class="vulnerability-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                  </svg>
+                  <span>Detected Stress Vulnerabilities</span>
+                </div>
+                <span class="badge badge-danger" id="vuln-count-badge">2 High Risks</span>
+              </div>
+              <div class="vulnerability-grid" id="dashboard-vuln-grid">
+                <!-- Dynamically populated vulnerabilities -->
+              </div>
+            </div>
+
+            <!-- Top KPI Cards Row -->
+            <div class="kpi-row">
+              <div class="card kpi-card kpi-card-accent">
+                <div class="kpi-title">Total Portfolio Value</div>
+                <div class="kpi-value" id="kpi-total-val">$0.00</div>
+                <div class="kpi-subtext" id="kpi-invested-sub">Invested: $0.00</div>
+              </div>
+
+              <div class="card kpi-card kpi-card-success" id="kpi-card-pl">
+                <div class="kpi-title">Unrealized Profit / Loss</div>
+                <div class="kpi-value" id="kpi-total-pl">+$0.00</div>
+                <div class="kpi-subtext" id="kpi-return-pct">+0.00% Return</div>
+              </div>
+
+              <div class="card kpi-card kpi-card-warning">
+                <div class="kpi-title">Overall Risk Score</div>
+                <div class="kpi-value" id="kpi-risk-score">48 / 100</div>
+                <div class="kpi-subtext" id="kpi-risk-grade">Moderate Risk Profile</div>
+              </div>
+
+              <div class="card kpi-card kpi-card-danger">
+                <div class="kpi-title">95% Daily Value at Risk</div>
+                <div class="kpi-value" id="kpi-var-val">$0.00</div>
+                <div class="kpi-subtext" id="kpi-var-pct">1-Day Potential Loss</div>
+              </div>
+            </div>
+
+            <!-- Main Charts Grid -->
+            <div class="dashboard-charts-grid">
+              <!-- Performance / Growth History Chart -->
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">Portfolio Valuation Trajectory</h3>
+                    <div class="card-subtitle">Historical simulated trend & baseline comparison</div>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn btn-xs btn-outline active">1Y</button>
+                    <button class="btn btn-xs btn-outline">5Y</button>
+                    <button class="btn btn-xs btn-outline">Max</button>
+                  </div>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="chart-dashboard-performance"></canvas>
+                </div>
+              </div>
+
+              <!-- Asset Class Allocation Donut -->
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">Asset Class Allocation</h3>
+                    <div class="card-subtitle">Current capital distribution</div>
+                  </div>
+                </div>
+                <div class="chart-container-donut">
+                  <canvas id="chart-dashboard-allocation"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sector Breakdown & Simulation History Row -->
+            <div class="dashboard-charts-grid">
+              <!-- Sector Concentration Bar Chart -->
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">Sector Exposure & Weight</h3>
+                    <div class="card-subtitle">Relative weight percentage across sectors</div>
+                  </div>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="chart-dashboard-sectors"></canvas>
+                </div>
+              </div>
+
+              <!-- Recent Stress Tests History -->
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">Simulation History</h3>
+                    <div class="card-subtitle">Past stress test autopsies</div>
+                  </div>
+                  <button class="btn btn-xs btn-outline" id="btn-clear-sim-history">Clear</button>
+                </div>
+                <div class="table-responsive" style="max-height: 280px;">
+                  <table class="data-table" id="table-sim-history">
+                    <thead>
+                      <tr>
+                        <th>Scenario</th>
+                        <th>Max Drawdown</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="sim-history-tbody">
+                      <!-- Rendered by dashboard view -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. MY PORTFOLIO VIEW -->
+        <section class="view-section" id="view-portfolio" data-title="Portfolio Management" data-desc="Asset holdings, position weighting, CRUD management & CSV imports">
+          <div class="portfolio-toolbar">
+            <div class="portfolio-search-group">
+              <div class="search-input-wrapper">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" id="portfolio-search" class="form-input" placeholder="Search by ticker, name, or sector...">
+              </div>
+              <select id="filter-asset-class" class="form-select" style="max-width: 170px;">
+                <option value="">All Asset Classes</option>
+              </select>
+              <select id="filter-sector" class="form-select" style="max-width: 150px;">
+                <option value="">All Sectors</option>
+              </select>
+            </div>
+
+            <div class="portfolio-actions-group">
+              <!-- Preset switcher -->
+              <div class="preset-selector-group">
+                <span class="text-xs text-muted">Presets:</span>
+                <select id="preset-portfolio-selector" class="form-select" style="max-width: 190px;">
+                  <option value="balanced">60/40 Balanced</option>
+                  <option value="techGrowth">Tech Growth Heavy</option>
+                  <option value="allWeather">All-Weather Parity</option>
+                </select>
+              </div>
+
+              <!-- Snapshot Manager button -->
+              <button class="btn btn-secondary btn-sm" id="btn-open-snapshots">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 12h-2v3h-3v2h5v-5zM7 9h2V6H6v5h1V9zm14-6H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z"/>
+                </svg>
+                <span>Snapshots</span>
+              </button>
+
+              <!-- CSV Import button -->
+              <button class="btn btn-outline btn-sm" id="btn-open-csv-modal">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                </svg>
+                <span>Import CSV</span>
+              </button>
+
+              <!-- Add Holding button -->
+              <button class="btn btn-primary btn-sm" id="btn-open-add-holding">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+                <span>Add Holding</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Holdings Table -->
+          <div class="table-responsive">
+            <table class="data-table" id="table-holdings">
+              <thead>
+                <tr>
+                  <th class="sortable" data-sort="symbol">Asset / Ticker</th>
+                  <th class="sortable" data-sort="assetClass">Class & Sector</th>
+                  <th class="sortable" data-sort="quantity">Quantity</th>
+                  <th class="sortable" data-sort="buyPrice">Avg Buy</th>
+                  <th class="sortable" data-sort="currentPrice">Current Price</th>
+                  <th class="sortable" data-sort="currentValue">Market Value</th>
+                  <th class="sortable" data-sort="weight">Weight %</th>
+                  <th class="sortable" data-sort="unrealizedPL">Unrealized P/L</th>
+                  <th class="sortable" data-sort="beta">Beta / Vol</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="holdings-tbody">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 3. CRISIS THEATRE (FLAGSHIP INTERACTIVE SIMULATOR) -->
+        <section class="view-section" id="view-theatre" data-title="Crisis Theatre" data-desc="Full-screen dynamic crisis simulator with multi-phase stress contagion">
+          <div class="theatre-container" id="theatre-container">
+            <!-- Top HUD & Playback Deck -->
+            <div class="theatre-hud-bar">
+              <div class="theatre-scenario-badge-group">
+                <div class="crisis-live-beacon">
+                  <div class="beacon-pulse"></div>
+                  <span id="theatre-status-text">CRISIS SIMULATION</span>
+                </div>
+                <div class="theatre-scenario-name" id="theatre-active-scenario-name">2008 Global Liquidity Shock</div>
+              </div>
+
+              <!-- Playback Deck -->
+              <div class="theatre-controls">
+                <button class="btn-ctrl" id="btn-theatre-step-back" title="Step Back 1 Day">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
+                <button class="btn-ctrl btn-primary-ctrl" id="btn-theatre-play-pause" title="Play / Pause Simulation">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="icon-theatre-play">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </button>
+                <button class="btn-ctrl" id="btn-theatre-step-fwd" title="Step Forward 1 Day">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+                <button class="btn-ctrl" id="btn-theatre-restart" title="Restart Simulation">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                </button>
+
+                <!-- Speed selector -->
+                <select id="theatre-speed-select" class="speed-select" title="Simulation Speed">
+                  <option value="0.5">0.5x</option>
+                  <option value="1" selected>1.0x</option>
+                  <option value="2">2.0x</option>
+                  <option value="5">5.0x</option>
+                  <option value="instant">Instant</option>
+                </select>
+
+                <!-- Scenario Switcher button inside theatre -->
+                <button class="btn btn-xs btn-outline" id="btn-theatre-switch-scenario">Switch Crisis</button>
+              </div>
+            </div>
+
+            <!-- 5-Phase Crisis Stage Progression -->
+            <div class="theatre-phases-wrapper">
+              <div class="phases-track">
+                <div class="phase-step active" id="phase-step-1">
+                  <span class="phase-num">Phase 1</span>
+                  <span class="phase-title">Initial Shock</span>
+                </div>
+                <div class="phase-step" id="phase-step-2">
+                  <span class="phase-num">Phase 2</span>
+                  <span class="phase-title">Sector Contagion</span>
+                </div>
+                <div class="phase-step" id="phase-step-3">
+                  <span class="phase-num">Phase 3</span>
+                  <span class="phase-title">Correlation Breakdown</span>
+                </div>
+                <div class="phase-step" id="phase-step-4">
+                  <span class="phase-num">Phase 4</span>
+                  <span class="phase-title">Maximum Stress</span>
+                </div>
+                <div class="phase-step" id="phase-step-5">
+                  <span class="phase-num">Phase 5</span>
+                  <span class="phase-title">Recovery Divergence</span>
+                </div>
+              </div>
+
+              <!-- Timeline scrubber slider -->
+              <div class="theatre-scrubber-row">
+                <span class="scrubber-label" id="theatre-day-label">Day 0 / 60</span>
+                <input type="range" class="form-range" id="theatre-scrubber" min="0" max="60" value="0">
+                <span class="text-xs text-muted" id="theatre-phase-desc">Catalyst trigger & initial sell-off</span>
+              </div>
+            </div>
+
+            <!-- Real-time Crisis KPI Cards -->
+            <div class="theatre-kpi-grid">
+              <div class="theatre-kpi-card">
+                <div class="kpi-title">Current Valuation</div>
+                <div class="theatre-kpi-val" id="theatre-kpi-val">$0.00</div>
+                <div class="kpi-subtext" id="theatre-kpi-start-val">Started: $0.00</div>
+              </div>
+
+              <div class="theatre-kpi-card">
+                <div class="kpi-title">Simulated Loss ($ & %)</div>
+                <div class="theatre-kpi-val loss-negative" id="theatre-kpi-loss">-$0.00</div>
+                <div class="kpi-subtext text-danger" id="theatre-kpi-loss-pct">-0.00% Decline</div>
+              </div>
+
+              <div class="theatre-kpi-card stress-peak">
+                <div class="kpi-title">Maximum Drawdown</div>
+                <div class="theatre-kpi-val text-danger" id="theatre-kpi-max-dd">-0.00%</div>
+                <div class="kpi-subtext" id="theatre-kpi-trough">Trough Value: $0.00</div>
+              </div>
+
+              <div class="theatre-kpi-card">
+                <div class="kpi-title">Capital Protected / Hedge</div>
+                <div class="theatre-kpi-val text-success" id="theatre-kpi-hedged">$0.00</div>
+                <div class="kpi-subtext" id="theatre-kpi-resilient-count">Safe Haven Assets Active</div>
+              </div>
+            </div>
+
+            <!-- Theatre Stage Screen & Live News Feed -->
+            <div class="theatre-stage-grid">
+              <!-- Live Canvas Visualizer -->
+              <div class="theatre-chart-screen">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title text-accent">Real-Time Valuation & Drawdown Trajectory</h3>
+                    <div class="card-subtitle">Tick-by-tick simulation curve under stress testing</div>
+                  </div>
+                </div>
+                <div class="theatre-chart-canvas-container">
+                  <canvas id="chart-theatre-canvas"></canvas>
+                </div>
+              </div>
+
+              <!-- Crisis News Feed & Milestone Wire -->
+              <div class="theatre-feed-panel">
+                <div class="feed-header">
+                  <div class="feed-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
+                    <span>Crisis Milestone Wire</span>
+                  </div>
+                  <span class="badge badge-default" id="feed-count-badge">Live</span>
+                </div>
+                <div class="feed-list" id="theatre-feed-list">
+                  <!-- Real-time market headline events emitted as simulation steps -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset Damage Matrix Table -->
+            <div class="theatre-damage-matrix">
+              <div class="damage-matrix-title">
+                <span>Holding-Level Stress Impact Board</span>
+                <span class="text-xs text-muted">Real-time loss attribution per asset</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="table-theatre-damage">
+                  <thead>
+                    <tr>
+                      <th>Holding</th>
+                      <th>Class / Sector</th>
+                      <th>Initial Price</th>
+                      <th>Current Simulated</th>
+                      <th>Simulated Change</th>
+                      <th>Capital Impact ($)</th>
+                      <th>Vulnerability Tier</th>
+                    </tr>
+                  </thead>
+                  <tbody id="theatre-damage-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Autopsy Banner when simulation finishes or pauses -->
+            <div class="theatre-autopsy-prompt" id="theatre-autopsy-prompt" style="display: none;">
+              <div>
+                <h3 class="font-bold text-primary">Simulation Completed / Paused</h3>
+                <p class="text-xs text-secondary">Review the forensic post-crash autopsy to identify what amplified your losses and examine recovery math.</p>
+              </div>
+              <button class="btn btn-primary" id="btn-theatre-goto-autopsy">Launch Post-Crash Autopsy</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. SCENARIO LIBRARY VIEW -->
+        <section class="view-section" id="view-scenarios" data-title="Crisis Scenario Library" data-desc="Historical crises, macroeconomic stress templates & custom crash builders">
+          <div class="portfolio-toolbar">
+            <div class="portfolio-search-group">
+              <div class="search-input-wrapper">
+                <input type="text" id="scenario-search" class="form-input" placeholder="Search scenarios by name, catalyst, or sector...">
+              </div>
+              <select id="filter-scenario-severity" class="form-select" style="max-width: 170px;">
+                <option value="">All Severities</option>
+                <option value="extreme">Extreme</option>
+                <option value="severe">Severe</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="portfolio-actions-group">
+              <button class="btn btn-outline btn-sm" id="btn-open-scenario-compare">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v2h2V1h-2v2zm-5 4h5v2H5V7zm0 4h5v2H5v-2zm0 4h5v2H5v-2zm9 4h5v-2h-5v2zm0-4h5v-2h-5v2zm0-4h5V7h-5v2zm0-6v2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-5v2z"/></svg>
+                <span>Compare Scenarios</span>
+              </button>
+              <button class="btn btn-primary btn-sm" id="btn-open-custom-scenario">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                <span>Build Custom Crash</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Cards Grid -->
+          <div class="scenarios-grid" id="scenarios-cards-grid">
+            <!-- Dynamically populated scenario cards -->
+          </div>
+        </section>
+
+        <!-- 5. RISK INTELLIGENCE VIEW -->
+        <section class="view-section" id="view-risk" data-title="Risk Intelligence & Analytics" data-desc="Quantitative Value at Risk (VaR), CVaR, Herfindahl concentration & cross-asset correlation matrix">
+          <!-- Top Risk Metrics Row -->
+          <div class="risk-kpi-grid">
+            <div class="card kpi-card kpi-card-danger">
+              <div class="kpi-title">Parametric Value at Risk (VaR)</div>
+              <div class="kpi-value" id="risk-metric-var">$0.00</div>
+              <div class="kpi-subtext" id="risk-sub-var">95% Confidence (1-Day)</div>
+            </div>
+
+            <div class="card kpi-card kpi-card-danger">
+              <div class="kpi-title">Conditional VaR (Expected Shortfall)</div>
+              <div class="kpi-value" id="risk-metric-cvar">$0.00</div>
+              <div class="kpi-subtext">Average loss beyond VaR threshold</div>
+            </div>
+
+            <div class="card kpi-card kpi-card-warning">
+              <div class="kpi-title">Annualized Volatility (σ)</div>
+              <div class="kpi-value" id="risk-metric-vol">0.00%</div>
+              <div class="kpi-subtext">Portfolio standard deviation</div>
+            </div>
+
+            <div class="card kpi-card kpi-card-accent">
+              <div class="kpi-title">Sharpe Ratio</div>
+              <div class="kpi-value" id="risk-metric-sharpe">0.00</div>
+              <div class="kpi-subtext">Excess return per unit of total risk</div>
+            </div>
+          </div>
+
+          <!-- Correlation Matrix & Concentration Row -->
+          <div class="dashboard-charts-grid" style="margin-bottom: var(--space-6);">
+            <!-- Interactive Correlation Matrix Heatmap -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Cross-Asset Correlation Matrix Heatmap</h3>
+                  <div class="card-subtitle">Pairwise correlation: -1.0 (Green / Diversifier) to +1.0 (Red / Correlated)</div>
+                </div>
+              </div>
+              <div class="correlation-matrix-container">
+                <table class="correlation-table" id="correlation-matrix-table">
+                  <!-- Rendered dynamically -->
+                </table>
+              </div>
+            </div>
+
+            <!-- Concentration & HHI Analysis -->
+            <div class="card hhi-meter-box">
+              <div>
+                <h3 class="card-title">Concentration Risk (Herfindahl Index)</h3>
+                <div class="card-subtitle">Measures single-asset and sector overweight vulnerabilities</div>
+              </div>
+
+              <div>
+                <div class="flex-between" style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <span class="text-xs text-muted">Holdings HHI Score:</span>
+                  <span class="font-mono font-bold text-primary" id="risk-hhi-val">1,850</span>
+                </div>
+                <div class="hhi-bar-track">
+                  <div class="hhi-marker-needle" id="risk-hhi-needle" style="left: 20%;"></div>
+                </div>
+                <div class="flex-between" style="display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.65rem; color: var(--text-muted);">
+                  <span>Diversified (&lt;1500)</span>
+                  <span>Moderate (1500-2500)</span>
+                  <span>High Risk (&gt;2500)</span>
+                </div>
+              </div>
+
+              <!-- Top Contributors -->
+              <div class="action-plan-list" id="risk-concentration-list">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Mathematical Methodology Disclosure Box -->
+          <div class="methodology-box">
+            <div class="methodology-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              <span>Quantitative Methodology & Boundary Disclosure</span>
+            </div>
+            <p>Parametric Value at Risk (VaR) is computed via the Variance-Covariance framework using 252 annual trading days and normal distribution quantiles (Z=1.645 for 95%, Z=2.326 for 99%). Conditional VaR (CVaR / Expected Shortfall) measures tail risk beyond the threshold. Diversification ratio reflects weighted individual asset volatilities divided by aggregate portfolio volatility. Stress testing incorporates non-linear cross-asset correlation breakdowns where historical diversification often fails during market panic.</p>
+          </div>
+        </section>
+
+        <!-- 6. WHAT-IF LAB VIEW -->
+        <section class="view-section" id="view-whatif" data-title="What-If Rebalancing Lab" data-desc="Simulate asset reallocations, cash hedges & rerun identical crashes side-by-side">
+          <div class="whatif-dual-grid">
+            <!-- Left Column: Original Active Portfolio -->
+            <div class="whatif-column">
+              <div class="whatif-column-header">
+                <div>
+                  <h3 class="card-title">Original Portfolio</h3>
+                  <div class="card-subtitle" id="whatif-orig-name">Institutional 60/40</div>
+                </div>
+                <span class="badge badge-default">Baseline</span>
+              </div>
+              <div class="allocation-sum-bar valid">
+                <span>Total Weight:</span>
+                <span class="font-mono">100.00%</span>
+              </div>
+              <div id="whatif-orig-holdings-list">
+                <!-- Holdings breakdown -->
+              </div>
+            </div>
+
+            <!-- Right Column: Modified Sandbox Portfolio -->
+            <div class="whatif-column modified-column">
+              <div class="whatif-column-header">
+                <div>
+                  <h3 class="card-title text-accent">Modified Sandbox Portfolio</h3>
+                  <div class="card-subtitle">Adjust sliders or choose hedge presets</div>
+                </div>
+                <!-- Rebalance Presets -->
+                <div class="card-actions">
+                  <button class="btn btn-xs btn-outline" id="btn-preset-defensive">20% Cash Flight</button>
+                  <button class="btn btn-xs btn-outline" id="btn-preset-hedge-tech">Gold & Bonds</button>
+                  <button class="btn btn-xs btn-outline" id="btn-whatif-reset">Reset</button>
+                </div>
+              </div>
+              <div class="allocation-sum-bar valid" id="whatif-modified-sum-bar">
+                <span>Total Weight:</span>
+                <span class="font-mono" id="whatif-modified-sum-val">100.00%</span>
+              </div>
+              <div id="whatif-sliders-container">
+                <!-- Dynamic weight adjustment sliders -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Side-by-Side Stress Test Comparison Board -->
+          <div class="whatif-comparison-board">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Crash Simulation Comparison</h3>
+                <div class="card-subtitle">Original vs Modified Portfolio under identical market shock</div>
+              </div>
+              <div class="card-actions">
+                <select id="whatif-scenario-select" class="form-select" style="max-width: 240px;">
+                  <!-- Options populated -->
+                </select>
+                <button class="btn btn-primary btn-sm" id="btn-run-whatif-comparison">Rerun Stress Test</button>
+              </div>
+            </div>
+
+            <!-- Comparison KPIs -->
+            <div class="comparison-kpi-grid">
+              <div class="comparison-kpi-card">
+                <span class="text-xs text-muted">Original Loss:</span>
+                <span class="font-mono font-bold text-danger" id="whatif-orig-loss">-$0.00</span>
+                <span class="text-xs text-secondary" id="whatif-orig-loss-pct">-0.00%</span>
+              </div>
+
+              <div class="comparison-kpi-card">
+                <span class="text-xs text-muted">Modified Loss:</span>
+                <span class="font-mono font-bold text-danger" id="whatif-mod-loss">-$0.00</span>
+                <span class="text-xs text-secondary" id="whatif-mod-loss-pct">-0.00%</span>
+              </div>
+
+              <div class="comparison-kpi-card">
+                <span class="text-xs text-muted">Capital Preserved / Saved:</span>
+                <div class="delta-badge delta-positive" id="whatif-capital-saved">+$0.00</div>
+                <span class="text-xs text-secondary">Due to rebalancing</span>
+              </div>
+
+              <div class="comparison-kpi-card">
+                <span class="text-xs text-muted">Max Drawdown Reduction:</span>
+                <div class="delta-badge delta-positive" id="whatif-dd-reduction">+0.00%</div>
+                <span class="text-xs text-secondary">Trough resilience improvement</span>
+              </div>
+            </div>
+
+            <!-- Dual Trajectory Comparison Chart -->
+            <div class="chart-container-box" style="height: 300px; margin-top: var(--space-4);">
+              <canvas id="chart-whatif-comparison"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. POST-CRASH AUTOPSY VIEW -->
+        <section class="view-section" id="view-autopsy" data-title="Post-Crash Autopsy" data-desc="Forensic breakdown of portfolio damage, loss attribution & breakeven recovery math">
+          <!-- Autopsy Header Banner -->
+          <div class="autopsy-header-banner" id="autopsy-banner">
+            <div class="autopsy-meta-row">
+              <div>
+                <span class="badge badge-danger">SIMULATION AUTOPSY DOSSIER</span>
+                <h2 class="text-2xl font-bold text-primary" style="margin-top: 4px;" id="autopsy-scenario-title">2008 Global Liquidity Shock</h2>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-autopsy-print">Print Autopsy Dossier</button>
+            </div>
+
+            <div class="autopsy-stats-grid">
+              <div class="autopsy-stat-box">
+                <span class="text-xs text-muted">Starting Portfolio Value</span>
+                <span class="font-mono font-bold text-primary" id="autopsy-start-val">$0.00</span>
+              </div>
+              <div class="autopsy-stat-box">
+                <span class="text-xs text-muted">Trough / Lowest Valuation</span>
+                <span class="font-mono font-bold text-danger" id="autopsy-trough-val">$0.00</span>
+              </div>
+              <div class="autopsy-stat-box">
+                <span class="text-xs text-muted">Total Capital Evaporated</span>
+                <span class="font-mono font-bold text-danger" id="autopsy-loss-val">-$0.00</span>
+              </div>
+              <div class="autopsy-stat-box">
+                <span class="text-xs text-muted">Maximum Drawdown</span>
+                <span class="font-mono font-bold text-danger" id="autopsy-max-dd">-0.00%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loss Attribution Grid -->
+          <div class="autopsy-attribution-grid">
+            <!-- Asset Attribution -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Asset-Level Loss Attribution</h3>
+                  <div class="card-subtitle">Holdings that contributed most to the portfolio loss</div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Asset</th>
+                      <th>Loss Amount</th>
+                      <th>Asset Return</th>
+                      <th>Loss Share %</th>
+                    </tr>
+                  </thead>
+                  <tbody id="autopsy-asset-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Sector Attribution -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Sector Contagion Breakdown</h3>
+                  <div class="card-subtitle">Damage by macroeconomic sector</div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Sector</th>
+                      <th>Total Sector Loss</th>
+                      <th>Average Decline</th>
+                    </tr>
+                  </thead>
+                  <tbody id="autopsy-sector-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recovery Requirements & Trajectories Card -->
+          <div class="recovery-math-box">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title text-accent">Recovery Requirements & Mathematical Reality Check</h3>
+                <div class="card-subtitle">The asymmetry of loss: A -40% decline requires +66.7% gain to break even</div>
+              </div>
+            </div>
+
+            <div class="recovery-cagr-grid">
+              <div class="recovery-cagr-card">
+                <span class="text-xs text-muted">Required Breakeven Gain</span>
+                <div class="kpi-value text-accent" id="autopsy-req-gain">+0.00%</div>
+                <span class="text-xs text-secondary">Capital return needed from bottom</span>
+              </div>
+
+              <div class="recovery-cagr-card">
+                <span class="text-xs text-muted">At 6% CAGR (Conservative)</span>
+                <div class="kpi-value text-primary" id="autopsy-rec-6cagr">0.0 Yrs</div>
+                <span class="text-xs text-secondary">Estimated recovery duration</span>
+              </div>
+
+              <div class="recovery-cagr-card">
+                <span class="text-xs text-muted">At 10% CAGR (Historical Avg)</span>
+                <div class="kpi-value text-success" id="autopsy-rec-10cagr">0.0 Yrs</div>
+                <span class="text-xs text-secondary">Estimated recovery duration</span>
+              </div>
+            </div>
+
+            <!-- Recovery Trajectory Projection Chart -->
+            <div class="chart-container-box" style="height: 280px;">
+              <canvas id="chart-autopsy-recovery"></canvas>
+            </div>
+          </div>
+
+          <!-- Prescriptive Recommendations -->
+          <div class="card" style="margin-top: var(--space-5);">
+            <div class="card-header">
+              <h3 class="card-title">Actionable Risk Mitigation Recommendations</h3>
+            </div>
+            <div class="action-plan-list" id="autopsy-action-list">
+              <!-- Dynamically generated recommendations -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. REPORTS & EXPORTS VIEW -->
+        <section class="view-section" id="view-reports" data-title="Institutional Reports" data-desc="Generate audit dossiers, formal PDF reports & structured data exports">
+          <div class="dossier-controls-bar">
+            <div>
+              <h3 class="card-title">Stress-Testing Executive Dossier</h3>
+              <div class="card-subtitle">Institutional PDF-ready formatting & audit documentation</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-outline btn-sm" id="btn-export-csv-dossier">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Export CSV</span>
+              </button>
+              <button class="btn btn-outline btn-sm" id="btn-export-json-dossier">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <span>Export JSON</span>
+              </button>
+              <button class="btn btn-primary btn-sm" id="btn-print-pdf-dossier">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+                <span>Print to PDF</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Printable Dossier Paper Preview -->
+          <div class="dossier-paper" id="dossier-paper">
+            <div style="border-bottom: 2px solid var(--accent); padding-bottom: var(--space-4); display: flex; justify-content: space-between; align-items: flex-end;">
+              <div>
+                <h1 style="font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em;">PORTFOLIO CRASH THEATRE</h1>
+                <p class="text-xs text-muted">OFFICIAL FINANCIAL STRESS TESTING & RISK AUDIT REPORT</p>
+              </div>
+              <div class="text-right" style="text-align: right;">
+                <div class="font-mono text-xs" id="dossier-date">Generated: 2026-11-25</div>
+                <div class="font-mono text-xs text-muted" id="dossier-audit-id">Audit ID: PCT-984210</div>
+              </div>
+            </div>
+
+            <!-- Portfolio Details Section -->
+            <div>
+              <h3 class="font-bold text-primary" style="margin-bottom: var(--space-2);">1. Portfolio Baseline Profile</h3>
+              <div class="kpi-row" style="margin-bottom: var(--space-4);">
+                <div class="card" style="padding: var(--space-3);">
+                  <div class="text-xs text-muted">Portfolio Name</div>
+                  <div class="font-bold" id="dossier-port-name">Institutional 60/40</div>
+                </div>
+                <div class="card" style="padding: var(--space-3);">
+                  <div class="text-xs text-muted">Market Valuation</div>
+                  <div class="font-mono font-bold" id="dossier-port-val">$0.00</div>
+                </div>
+                <div class="card" style="padding: var(--space-3);">
+                  <div class="text-xs text-muted">Holdings Count</div>
+                  <div class="font-mono font-bold" id="dossier-port-count">0 Assets</div>
+                </div>
+                <div class="card" style="padding: var(--space-3);">
+                  <div class="text-xs text-muted">Weighted Beta</div>
+                  <div class="font-mono font-bold" id="dossier-port-beta">1.00</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stress Testing Results Section -->
+            <div>
+              <h3 class="font-bold text-primary" style="margin-bottom: var(--space-2);">2. Stress Simulation Performance Findings</h3>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Scenario Tested</th>
+                      <th>Peak Drawdown</th>
+                      <th>Simulated Dollar Loss</th>
+                      <th>Recovery Requirement</th>
+                      <th>Risk Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dossier-scenarios-tbody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Formal Disclaimer -->
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-4); font-size: 0.7rem; color: var(--text-muted); line-height: 1.5;">
+              <p>CONFIDENTIAL & PROPRIETARY. This quantitative stress-testing dossier is generated for analytical risk identification and educational simulation purposes only. Past crash simulations and hypothetical macroeconomic stress parameters do not constitute financial advice or guarantees of future market behavior.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. SETTINGS VIEW -->
+        <section class="view-section" id="view-settings" data-title="System Settings & Data" data-desc="Display preferences, risk model parameters, backup & data management">
+          <div class="card" style="max-width: 800px; margin-bottom: var(--space-5);">
+            <div class="card-header">
+              <h3 class="card-title">Financial Model Preferences</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label" for="setting-currency">Base Display Currency</label>
+                <select id="setting-currency" class="form-select">
+                  <option value="USD">USD ($) — US Dollar</option>
+                  <option value="EUR">EUR (€) — Euro</option>
+                  <option value="GBP">GBP (£) — British Pound</option>
+                  <option value="INR">INR (₹) — Indian Rupee</option>
+                  <option value="JPY">JPY (¥) — Japanese Yen</option>
+                  <option value="CAD">CAD (CA$) — Canadian Dollar</option>
+                  <option value="AUD">AUD (A$) — Australian Dollar</option>
+                </select>
+                <span class="form-hint">Used for all monetary formatting across the terminal.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="setting-risk-free-rate">Risk-Free Rate (Annual % for Sharpe Ratio)</label>
+                <input type="number" id="setting-risk-free-rate" class="form-input" min="0" max="25" step="0.1" value="4.5">
+                <span class="form-hint">Baseline treasury yield used in Sharpe calculation (Default: 4.5%).</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="setting-var-confidence">VaR Confidence Level</label>
+                <select id="setting-var-confidence" class="form-select">
+                  <option value="0.90">90% Confidence Interval (Z = 1.282)</option>
+                  <option value="0.95" selected>95% Confidence Interval (Z = 1.645)</option>
+                  <option value="0.99">99% Confidence Interval (Z = 2.326)</option>
+                </select>
+                <span class="form-hint">Statistical cutoff for Value at Risk calculations.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Backup & Reset Card -->
+          <div class="card" style="max-width: 800px;">
+            <div class="card-header">
+              <h3 class="card-title">Data Storage & Backup Management</h3>
+            </div>
+            <div class="card-body" style="display: flex; flex-direction: column; gap: var(--space-4);">
+              <p class="text-xs text-secondary">All your portfolio holdings, snapshots, and simulation histories are securely stored in your local browser storage. No data is sent to external servers.</p>
+
+              <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+                <button class="btn btn-outline btn-sm" id="btn-export-backup-json">Export Local Backup (JSON)</button>
+                <button class="btn btn-outline btn-sm" id="btn-trigger-import-json">Restore From Backup</button>
+                <input type="file" id="backup-file-input" accept=".json" style="display: none;">
+                <button class="btn btn-danger-outline btn-sm" id="btn-reset-factory-defaults">Reset to Factory Defaults</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODALS DIALOGS
+       ========================================== -->
+
+  <!-- 1. ADD / EDIT HOLDING MODAL -->
+  <div class="modal-backdrop" id="modal-holding" role="dialog" aria-modal="true" aria-labelledby="modal-holding-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-holding-title">Add Asset Holding</h2>
+        <button class="modal-close-btn" id="btn-close-holding-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="form-holding">
+        <div class="modal-body">
+          <input type="hidden" id="holding-id">
+          
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="holding-symbol">Ticker / Symbol *</label>
+              <input type="text" id="holding-symbol" class="form-input font-mono" placeholder="AAPL" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="holding-name">Asset Name *</label>
+              <input type="text" id="holding-name" class="form-input" placeholder="Apple Inc." required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="holding-asset-class">Asset Class *</label>
+              <select id="holding-asset-class" class="form-select" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="holding-sector">Sector *</label>
+              <select id="holding-sector" class="form-select" required></select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="holding-quantity">Quantity *</label>
+              <input type="number" id="holding-quantity" class="form-input font-mono" min="0.0001" step="any" placeholder="100" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="holding-buy-price">Avg Buy Price *</label>
+              <input type="number" id="holding-buy-price" class="form-input font-mono" min="0" step="any" placeholder="150.00" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="holding-current-price">Current Price *</label>
+              <input type="number" id="holding-current-price" class="form-input font-mono" min="0" step="any" placeholder="185.00" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="holding-beta">Beta to Market</label>
+              <input type="number" id="holding-beta" class="form-input font-mono" step="0.05" value="1.00">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="holding-volatility">Volatility (σ)</label>
+              <input type="number" id="holding-volatility" class="form-input font-mono" step="0.01" value="0.18">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="holding-liquidity">Liquidity Tier</label>
+              <select id="holding-liquidity" class="form-select">
+                <option value="high">High (T+1)</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low (Illiquid)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-holding">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-holding">Save Holding</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. CSV IMPORT WIZARD MODAL -->
+  <div class="modal-backdrop" id="modal-csv" role="dialog" aria-modal="true" aria-labelledby="modal-csv-title">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-csv-title">Import Holdings via CSV</h2>
+        <button class="modal-close-btn" id="btn-close-csv-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Dropzone -->
+        <div class="csv-dropzone" id="csv-dropzone">
+          <svg class="csv-dropzone-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+          </svg>
+          <h4 class="font-bold text-primary">Drag & Drop your CSV file here</h4>
+          <p class="text-xs text-muted" style="margin-top: 4px;">Supports comma, semicolon, or tab-delimited files. Sanitized against formula injection.</p>
+          <div style="margin-top: var(--space-4); display: flex; justify-content: center; gap: var(--space-3);">
+            <button class="btn btn-secondary btn-sm" id="btn-browse-csv">Browse Files</button>
+            <button class="btn btn-outline btn-sm" id="btn-download-sample-csv">Download Sample Template</button>
+          </div>
+          <input type="file" id="csv-file-input" accept=".csv,text/csv,text/plain" style="display: none;">
+        </div>
+
+        <!-- Mapping interface (hidden until file uploaded) -->
+        <div id="csv-mapping-section" style="display: none; margin-top: var(--space-4);">
+          <h4 class="font-bold text-primary">Map CSV Columns</h4>
+          <div class="mapping-grid" id="csv-mapping-grid">
+            <!-- Dynamic dropdown selectors for each required field -->
+          </div>
+
+          <div class="csv-preview-table-wrapper">
+            <table class="data-table" id="table-csv-preview">
+              <thead id="csv-preview-thead"></thead>
+              <tbody id="csv-preview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-csv">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-confirm-csv-import" disabled>Import Valid Rows</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SCENARIO CONFIGURATION MODAL -->
+  <div class="modal-backdrop" id="modal-scenario-config" role="dialog" aria-modal="true" aria-labelledby="modal-scenario-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-scenario-title">Configure Stress Scenario</h2>
+        <button class="modal-close-btn" id="btn-close-scenario-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="scenario-config-details">
+          <!-- Populated dynamically with scenario assumptions and sliders -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-scenario-config">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-launch-configured-scenario">Run Simulation in Theatre</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. SNAPSHOTS MANAGER MODAL -->
+  <div class="modal-backdrop" id="modal-snapshots" role="dialog" aria-modal="true" aria-labelledby="modal-snapshots-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-snapshots-title">Portfolio Snapshots & Versions</h2>
+        <button class="modal-close-btn" id="btn-close-snapshots-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+          <input type="text" id="snapshot-new-name" class="form-input" placeholder="Snapshot name (e.g. Q4 Rebalance)">
+          <button class="btn btn-primary btn-sm" id="btn-save-new-snapshot">Save Snapshot</button>
+        </div>
+        <div class="table-responsive" style="max-height: 280px;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Snapshot Name</th>
+                <th>Saved Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="snapshots-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. TOAST NOTIFICATIONS CONTAINER -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- MAIN JAVASCRIPT ENTRYPOINT (ES6 MODULE) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

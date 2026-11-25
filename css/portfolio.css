@@ -1,0 +1,172 @@
+/* ==========================================================================
+   PORTFOLIO VIEW STYLES
+   ========================================================================== */
+
+.portfolio-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  background-color: var(--bg-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.portfolio-search-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-input-wrapper input {
+  padding-left: 2.25rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.portfolio-actions-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Preset selector */
+.preset-selector-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Holdings table details */
+.holding-symbol {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.holding-name {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.weight-bar-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 100px;
+}
+
+.weight-progress-track {
+  width: 100%;
+  height: 4px;
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.weight-progress-fill {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: var(--radius-full);
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.btn-icon-cell {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.btn-icon-cell:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+}
+
+.btn-icon-cell.delete-btn:hover {
+  color: var(--danger);
+  background-color: var(--danger-muted);
+}
+
+/* CSV Importer Dropzone */
+.csv-dropzone {
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  background-color: var(--bg-input);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.csv-dropzone:hover, .csv-dropzone.drag-active {
+  border-color: var(--accent);
+  background-color: rgba(244, 185, 66, 0.05);
+}
+
+.csv-dropzone-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto var(--space-3);
+  color: var(--text-muted);
+}
+
+/* CSV Mapping Grid */
+.mapping-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+  background-color: var(--bg-secondary);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.mapping-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mapping-field label {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.csv-preview-table-wrapper {
+  max-height: 260px;
+  overflow-y: auto;
+  margin-top: var(--space-3);
+}

@@ -1,0 +1,132 @@
+/* ==========================================================================
+   DASHBOARD VIEW STYLES
+   ========================================================================== */
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Hero / KPI row */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 110px;
+}
+
+.kpi-card-danger {
+  border-left: 3px solid var(--danger);
+}
+
+.kpi-card-warning {
+  border-left: 3px solid var(--warning);
+}
+
+.kpi-card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.kpi-card-success {
+  border-left: 3px solid var(--success);
+}
+
+/* Charts grid */
+.dashboard-charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-5);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-container-box {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+.chart-container-donut {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vulnerabilities & alerts bar */
+.vulnerability-panel {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(244, 185, 66, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+}
+
+.vulnerability-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.vulnerability-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--danger);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vulnerability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.vuln-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.vuln-item-title {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vuln-item-desc {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* History table */
+.sim-history-badge {
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-xs);
+}

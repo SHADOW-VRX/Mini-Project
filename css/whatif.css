@@ -1,0 +1,136 @@
+/* ==========================================================================
+   WHAT-IF LAB STYLES
+   ========================================================================== */
+
+.whatif-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+@media (max-width: 1024px) {
+  .whatif-dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whatif-column {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.whatif-column.modified-column {
+  border-color: rgba(244, 185, 66, 0.35);
+  box-shadow: 0 0 20px rgba(244, 185, 66, 0.06);
+}
+
+.whatif-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-3);
+}
+
+.rebalance-slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.rebalance-asset-info {
+  width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rebalance-slider-container {
+  flex: 1;
+}
+
+.rebalance-val-badge {
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* Allocation total pill */
+.allocation-sum-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  font-weight: 700;
+}
+
+.allocation-sum-bar.valid {
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--success);
+}
+
+.allocation-sum-bar.invalid {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger);
+}
+
+/* Delta Comparison Section */
+.whatif-comparison-board {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.comparison-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.comparison-kpi-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.delta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-xs);
+}
+
+.delta-positive {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--success);
+}
+
+.delta-negative {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+}

@@ -1,0 +1,226 @@
+/* ==========================================================================
+   POST-CRASH AUTOPSY & FORMAL REPORTS STYLING
+   ========================================================================== */
+
+/* Autopsy Banner */
+.autopsy-header-banner {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(20, 24, 33, 0.95) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.autopsy-header-banner::before {
+  content: 'POST-CRASH AUTOPSY';
+  position: absolute;
+  right: -20px;
+  bottom: -15px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.autopsy-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.autopsy-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.autopsy-stat-box {
+  background: rgba(9, 10, 13, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Loss Attribution Grid */
+.autopsy-attribution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .autopsy-attribution-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Recovery Trajectory Math Box */
+.recovery-math-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recovery-cagr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin: var(--space-3) 0;
+}
+
+.recovery-cagr-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+}
+
+/* Action Plan recommendations */
+.action-plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.action-plan-item {
+  background-color: var(--bg-secondary);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.action-plan-icon {
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+/* Reports Dossier Builder */
+.dossier-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-5);
+}
+
+.dossier-paper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   PRINT MEDIA STYLESHEET (PDF & Print Report Engine)
+   ========================================================================== */
+@media print {
+  /* Hide interactive elements, navigation, buttons */
+  .sidebar,
+  .header,
+  .theatre-controls,
+  .portfolio-toolbar,
+  .dossier-controls-bar,
+  .modal-backdrop,
+  .toast-container,
+  .btn,
+  .icon-btn,
+  .drawer-backdrop {
+    display: none !important;
+  }
+
+  /* Reset layout for full page print */
+  #app, body, html {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .content-area {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .view-section {
+    display: block !important;
+  }
+
+  .card, .dossier-paper, .autopsy-header-banner, .autopsy-stat-box {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    border: 1px solid #D1D5DB !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6, .card-title, .kpi-value, .theatre-kpi-val {
+    color: #111827 !important;
+  }
+
+  p, .text-secondary, .text-muted, td, th {
+    color: #4B5563 !important;
+  }
+
+  .data-table th {
+    background-color: #F3F4F6 !important;
+    color: #111827 !important;
+  }
+
+  .data-table td {
+    border-bottom: 1px solid #E5E7EB !important;
+  }
+
+  .badge-danger {
+    background: #FEE2E2 !important;
+    color: #DC2626 !important;
+  }
+
+  .badge-success {
+    background: #DCFCE7 !important;
+    color: #16A34A !important;
+  }
+
+  .badge-warning {
+    background: #FEF3C7 !important;
+    color: #D97706 !important;
+  }
+
+  .badge-accent {
+    background: #FEF9C3 !important;
+    color: #B45309 !important;
+  }
+}

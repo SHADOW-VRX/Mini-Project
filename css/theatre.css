@@ -1,0 +1,405 @@
+/* ==========================================================================
+   CRISIS THEATRE — CINEMATIC STRESS SIMULATOR
+   ========================================================================== */
+
+.theatre-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  position: relative;
+}
+
+/* Fullscreen mode */
+.theatre-container.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-theatre-fullscreen);
+  background-color: var(--bg-primary);
+  padding: var(--space-5);
+  overflow-y: auto;
+  margin: 0;
+  max-width: none;
+}
+
+/* Top Cinematic HUD */
+.theatre-hud-bar {
+  background: linear-gradient(180deg, #1A1D26 0%, #111319 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+.theatre-scenario-badge-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.crisis-live-beacon {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--font-xs);
+  font-weight: 800;
+  color: var(--danger);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-full);
+}
+
+.beacon-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 10px var(--danger);
+  animation: beaconBlink 1.2s infinite;
+}
+
+@keyframes beaconBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+.theatre-scenario-name {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Playback Control Deck */
+.theatre-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.btn-ctrl {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.btn-ctrl:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-ctrl.btn-primary-ctrl {
+  background: var(--accent);
+  color: #090A0D;
+  border-color: var(--accent);
+}
+
+.btn-ctrl.btn-primary-ctrl:hover {
+  background: #f7c65f;
+  box-shadow: 0 0 15px rgba(244, 185, 66, 0.5);
+}
+
+.btn-ctrl.active {
+  background: var(--accent-muted);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.speed-select {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* 5-Phase Crisis Stage Bar */
+.theatre-phases-wrapper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.phases-track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+}
+
+.phase-step {
+  padding: var(--space-2);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-step.active {
+  border-color: var(--accent);
+  background-color: rgba(244, 185, 66, 0.08);
+  box-shadow: 0 0 12px rgba(244, 185, 66, 0.15);
+}
+
+.phase-step.past {
+  border-color: var(--border-default);
+  background-color: var(--bg-elevated);
+  opacity: 0.75;
+}
+
+.phase-num {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.phase-step.active .phase-num {
+  color: var(--accent);
+}
+
+.phase-title {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phase-step.active .phase-title {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Timeline scrubber */
+.theatre-scrubber-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-1);
+}
+
+.scrubber-label {
+  font-size: var(--font-xs);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-secondary);
+  min-width: 90px;
+}
+
+/* Crisis KPI Visualizer Board */
+.theatre-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.theatre-kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.theatre-kpi-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-subtle);
+}
+
+.theatre-kpi-card.stress-peak::after {
+  background: var(--danger);
+  box-shadow: 0 0 12px var(--danger);
+}
+
+.theatre-kpi-val {
+  font-family: var(--font-mono);
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: var(--space-1) 0;
+}
+
+.theatre-kpi-val.loss-negative {
+  color: var(--danger);
+}
+
+/* Theatre Main Screen Area (Chart + Event Log side by side) */
+.theatre-stage-grid {
+  display: grid;
+  grid-template-columns: 3fr 1.3fr;
+  gap: var(--space-5);
+}
+
+@media (max-width: 1200px) {
+  .theatre-stage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.theatre-chart-screen {
+  background: #0E1016;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.theatre-chart-canvas-container {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 380px;
+}
+
+/* Crisis Event Feed / Wire */
+.theatre-feed-panel {
+  background: #0D0F14;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  max-height: 480px;
+  overflow: hidden;
+}
+
+.feed-header {
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feed-title {
+  font-size: var(--font-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-accent);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.feed-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.feed-item {
+  background: var(--bg-card);
+  border-left: 3px solid var(--border-default);
+  padding: var(--space-2) var(--space-3);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: feedItemEnter 0.3s ease-out;
+}
+
+.feed-item.feed-alert {
+  border-left-color: var(--danger);
+  background: rgba(239, 68, 68, 0.07);
+}
+
+.feed-item.feed-recovery {
+  border-left-color: var(--success);
+  background: rgba(34, 197, 94, 0.07);
+}
+
+.feed-time {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.feed-headline {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+@keyframes feedItemEnter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Asset Damage Matrix */
+.theatre-damage-matrix {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.damage-matrix-title {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Post-crash launcher banner */
+.theatre-autopsy-prompt {
+  background: linear-gradient(135deg, rgba(244, 185, 66, 0.15) 0%, rgba(239, 68, 68, 0.15) 100%);
+  border: 1px solid rgba(244, 185, 66, 0.4);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-4);
+  animation: fadeIn 0.4s ease-out;
+}
